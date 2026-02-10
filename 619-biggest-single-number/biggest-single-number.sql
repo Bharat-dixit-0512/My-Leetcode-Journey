@@ -1,8 +1,8 @@
-SELECT MAX(num) as num
-FROM mynumbers n
-where num IN (
+SELECT (
     SELECT num
-    FROM mynumbers
+    FROM MyNumbers 
     GROUP BY num
-    HAVING COUNT(*)=1
-)
+    HAVING COUNT(*) = 1
+    ORDER BY num DESC
+    LIMIT 1
+) as num;
