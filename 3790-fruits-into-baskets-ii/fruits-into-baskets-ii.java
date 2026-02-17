@@ -1,13 +1,11 @@
 class Solution {
     public int numOfUnplacedFruits(int[] fruits, int[] baskets) {
-        boolean flag[]=new boolean[baskets.length];
-        int count=flag.length;
-        Arrays.fill(flag,false);
-        for(int i=0;i<flag.length;i++){
+        int count=baskets.length;
+        for(int i=0;i<fruits.length;i++){
             int value=fruits[i];
             for(int j=0;j<baskets.length;j++){
-                if(value<=baskets[j] && flag[j]==false){
-                    flag[j]=true;
+                if(value<=baskets[j] ){
+                    baskets[j]=0;
                     count--;
                     break;
                 }
