@@ -1,11 +1,5 @@
 class Solution{
     public int longestSubarray(int[] nums){
-        /*
-        [0,1,1,1,0,1,1,0,1]
-        zero=1
-        s=0 e=0
-        max=1
-        */
         int zero=0;
         int s=0;
         int max=0;
@@ -19,6 +13,5 @@ class Solution{
             max=Math.max(max,size);
         }
         return max-1;
-
     }
 }
