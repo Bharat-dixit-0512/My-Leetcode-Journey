@@ -16,6 +16,5 @@ class Solution {
             char2++;
         }
         return stb.toString();
-
     }
 }
