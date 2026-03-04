@@ -8,7 +8,6 @@ class Solution {
             int f=fruits[i];
             if(fr[f]==0)type++;
             fr[f]++;
-            
             while(type>2){
                 fr[fruits[start]]--;
                 if(fr[fruits[start]]==0)type--;
