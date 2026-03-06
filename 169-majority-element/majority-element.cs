@@ -1,15 +1,6 @@
 public class Solution {
     public int MajorityElement(int[] nums) {
-        Dictionary<int,int> count=new Dictionary<int,int>();
-        foreach(int i in nums){
-            if(!count.ContainsKey(i))
-                count[i]=0;
-            count[i]++;
-
-            if(count[i]>nums.Length/2){
-                return i;
-            }
-        }
-        return -1;
+        Array.Sort(nums);
+        return nums[nums.Length/2];
     }
 }
