@@ -1,15 +1,18 @@
 class Solution {
     public int findMin(int[] nums) {
-        HashSet<Integer> set=new HashSet<>();
-        for(int n:nums){
-            set.add(n);
-        }
-        int min=Integer.MAX_VALUE;
-        for(int n:set){
-            if(n<min){
-                min=n;
+        int left=0,right=nums.length-1;
+        while(left<right){
+            int mid=left+(right-left)/2;
+            if(nums[mid]<nums[right]){
+                right=mid;
+            }
+            else if(nums[mid]>nums[right]){
+                left=mid+1;
+            }
+            else{
+                right--;
             }
         }
-        return min;
+        return nums[left];
     }
 }
