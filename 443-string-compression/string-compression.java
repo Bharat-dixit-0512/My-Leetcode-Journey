@@ -1,23 +1,29 @@
+import java.util.*;
+
 class Solution {
     public int compress(char[] chars) {
-        int write = 0;
-        int read = 0;
-        while (read < chars.length) {
-            char currentChar = chars[read];
-            int count = 0;
+        StringBuilder sb = new StringBuilder();
+        int i = 0;
 
-            while (read < chars.length && chars[read] == currentChar) {
-                read++;
+        while (i < chars.length) {
+            char current = chars[i];
+            HashMap<Character, Integer> map = new HashMap<>();
+            int count = 0;
+            while (i < chars.length && chars[i] == current) {
+                map.put(current, map.getOrDefault(current, 0) + 1);
+                i++;
                 count++;
             }
-            chars[write++] = currentChar;
+            sb.append(current);
+
             if (count > 1) {
-                for (char c : String.valueOf(count).toCharArray()) {
-                    chars[write++] = c;
-                }
+                sb.append(count);
             }
         }
-        return write;
+        for (int j = 0; j < sb.length(); j++) {
+            chars[j] = sb.charAt(j);
+        }
+
+        return sb.length();
     }
 }
-
