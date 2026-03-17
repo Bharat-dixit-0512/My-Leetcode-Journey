@@ -2,7 +2,6 @@ class Solution {
     public int myAtoi(String s) {
         s = s.trim();
         if (s.isEmpty()) return 0; 
-        if(s.equals(".1"))return 0;
 
         StringBuilder stb = new StringBuilder();
         if (Character.isLetter(s.charAt(0))) return 0;
@@ -10,7 +9,10 @@ class Solution {
         String symbol = "";
         if (s.charAt(0) == '-') {
             symbol = "-";
-        } else {
+        } else if(s.charAt(0)=='.'){
+            return 0;
+        }
+        else{
             symbol = "+";
         }
         if (Character.isDigit(s.charAt(0))) {
