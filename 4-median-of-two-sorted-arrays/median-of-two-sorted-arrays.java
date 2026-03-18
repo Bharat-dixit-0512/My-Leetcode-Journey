@@ -26,12 +26,7 @@ class Solution {
             j++;
             k++;
         }
-        if (k % 2 != 0) {
-            k =k/2;
-            return (double) result[k];
-        } else {
-            return ((double) result[k / 2 - 1] + (double) result[k / 2]) / 2.0;
-        }
-
+        
+        return k%2!=0?(double)result[k/2]:((double) result[k / 2 - 1] + (double) result[k / 2]) / 2.0;
     }
 }
