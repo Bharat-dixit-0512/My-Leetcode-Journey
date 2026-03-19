@@ -1,8 +1,8 @@
 class Solution {
     public int totalFruit(int[] fruits) {
-        int[] fr=new int[100007];
-        int max=0;
+        int fr[]=new int[100007];
         int type=0;
+        int max=0;
         int start=0;
         for(int i=0;i<fruits.length;i++){
             int f=fruits[i];
