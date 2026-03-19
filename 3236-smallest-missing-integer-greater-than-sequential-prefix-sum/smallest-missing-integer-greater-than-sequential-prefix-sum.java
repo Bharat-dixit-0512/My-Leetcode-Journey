@@ -1,16 +1,20 @@
 class Solution {
     public int missingInteger(int[] nums) {
-        int countSum=nums[0];
-        for(int i=1;i<nums.length;i++){
-            if(nums[i-1]+1==nums[i])countSum+=nums[i];
-            else break;
+        int pSum = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[i - 1] + 1) break;
+            pSum += nums[i];
         }
-        Arrays.sort(nums);
-        for(int i=0;i<nums.length;i++){
-            if(countSum==nums[i]){
-                countSum++;
-            }
+        Set<Integer> set = toSet(nums);
+        while (true) {
+            if (!set.contains(pSum)) return pSum;
+            pSum++;
         }
-        return countSum;
+    }
+
+    private Set<Integer> toSet(int[] nums) {
+        Set<Integer> set = new HashSet();
+        for (int i : nums) set.add(i);
+        return set;
     }
 }
