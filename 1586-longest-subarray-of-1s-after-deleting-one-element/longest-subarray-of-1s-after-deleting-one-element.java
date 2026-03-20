@@ -9,9 +9,9 @@ class Solution{
                 if(nums[s]==0)zero--;
                 s++;
             }
-            int size=e-s+1;
+            int size=e-s;
             max=Math.max(max,size);
         }
-        return max-1;
+        return max;
     }
 }
