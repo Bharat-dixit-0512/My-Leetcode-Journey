@@ -1,18 +1,18 @@
 class Solution {
     public ListNode removeElements(ListNode head, int val) {
-        List<Integer> list=new ArrayList<>();
-        while(head!=null){
-            list.add(head.val);
-            head=head.next;
-        }
-        ListNode ans=new ListNode(0);
-        ListNode ptr=ans;
-        for(int i=0;i<list.size();i++){
-            if(list.get(i)!=val){
-                ptr.next=new ListNode(list.get(i));
-                ptr=ptr.next;
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode curr = dummy;
+
+        while (curr.next != null) {
+            if (curr.next.val == val) {
+                curr.next = curr.next.next;
+            } else {
+                curr = curr.next;
             }
         }
-        return ans.next;
+
+        return dummy.next;
+
     }
 }
