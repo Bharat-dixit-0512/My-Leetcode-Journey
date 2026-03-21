@@ -1,28 +1,17 @@
 class Solution {
     public ListNode sortList(ListNode head) {
-        if(head==null)return null;
-        int count=0;
-        ListNode length=head;
-        while(length!=null){
-            length=length.next;
-            count++;
+        List<Integer> element=new ArrayList();
+        while(head!=null){
+            element.add(head.val);
+            head=head.next;
         }
-        int arr[]=new int[count];
-        int i=0;
-        ListNode curr=head;
-        while(curr!=null){
-            arr[i]=curr.val;
-            curr=curr.next;
-            i++;
+        ListNode sort=new ListNode(0);
+        ListNode ptr=sort;
+        Collections.sort(element);
+        for(int i=0;i<element.size();i++){
+            ptr.next=new ListNode(element.get(i));
+            ptr=ptr.next;
         }
-        Arrays.sort(arr);
-        ListNode dummy=new ListNode(0);
-        ListNode temp=dummy;
-        for(int j:arr){
-            temp.next=new ListNode(j);
-            temp=temp.next;
-        }
-        return dummy.next;
-        
+        return sort.next;
     }
 }
