@@ -8,11 +8,11 @@ class Solution {
                 st.push(s.charAt(i));
             }
         }
-        String ans="";
+        StringBuilder ans=new StringBuilder();
         while(!st.isEmpty()){
-            ans=st.pop()+ans;
+            ans.append(st.peek());
+            st.pop();
         }
-       return ans;
-        
+       return ans.reverse().toString();  
     }
 }
