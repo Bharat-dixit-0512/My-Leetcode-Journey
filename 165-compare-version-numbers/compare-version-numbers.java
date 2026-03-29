@@ -5,8 +5,11 @@ class Solution {
     
         int len=Math.max(v1.length,v2.length);
         for(int i=0;i<len;i++){
-            int num1=i<v1.length?Integer.parseInt(v1[i]):0;
-            int num2=i<v2.length? Integer.parseInt(v2[i]):0;
+            int num1=0;
+            if(i<v1.length)
+                num1=Integer.parseInt(v1[i]);
+            int num2=0;
+            if(i<v2.length)num2=Integer.parseInt(v2[i]);
             if(num1<num2)return -1;
             if(num1>num2)return 1;
         }
