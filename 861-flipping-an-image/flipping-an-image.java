@@ -5,8 +5,7 @@ class Solution {
         }
         for(int i=0;i<image.length;i++){
             for(int j=0;j<image[0].length;j++){
-                if(image[i][j]== 1)image[i][j]=0;
-                else image[i][j]=1;
+                image[i][j] ^= 1;
             }
         }
         return image;
