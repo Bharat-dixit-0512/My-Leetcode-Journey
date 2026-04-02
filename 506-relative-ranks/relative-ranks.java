@@ -8,7 +8,7 @@ class Pair{
 }
 class Solution {
     public String[] findRelativeRanks(int[] score) {
-        PriorityQueue<Pair> pq=new PriorityQueue<>((a,b)->Integer.compare(b.serial,a.serial));
+        PriorityQueue<Pair> pq=new PriorityQueue<>((a,b)->b.serial-a.serial);
         for(int i=0;i<score.length;i++){
             pq.add(new Pair(score[i],i));
         }
