@@ -1,27 +1,23 @@
 class MyStack {
-    Queue<Integer> q;
+    ArrayList<Integer>list;
     public MyStack() {
-        q=new ArrayDeque<>();
+        list=new ArrayList<>();
     }
     
     public void push(int x) {
-        q.offer(x);
-        for(int i=0;i<q.size()-1;i++){
-            int y=q.poll();
-            q.offer(y);
-        }
+        list.add(x);
     }
     
     public int pop() {
-        return q.poll();
+        return list.remove(list.size()-1);
     }
     
     public int top() {
-        return q.peek();
+        return list.get(list.size()-1);
     }
     
     public boolean empty() {
-        return q.isEmpty();
+        return list.size()==0;
     }
 }
 
