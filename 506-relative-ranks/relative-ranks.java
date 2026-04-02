@@ -1,38 +1,28 @@
-class Pair{
-    int serial;
-    int index;
-    public Pair(int serial,int index){
-        this.serial=serial;
-        this.index=index;
-    }
-}
 class Solution {
     public String[] findRelativeRanks(int[] score) {
-        PriorityQueue<Pair> pq=new PriorityQueue<>((a,b)->b.serial-a.serial);
+        String result[]=new String[score.length];
+
+        HashMap<Integer,Integer> map=new HashMap<>();
         for(int i=0;i<score.length;i++){
-            pq.add(new Pair(score[i],i));
+            map.put(score[i],i);
         }
-        String[] arr=new String[score.length];
-        int i=0;
-        while(!pq.isEmpty()){
-            Pair curr=pq.poll();
-            if(i==0){
-                arr[curr.index]="Gold Medal";
-                i++;
-            }
-            else if(i==1){
-                arr[curr.index]="Silver Medal";
-                i++;
-            }
-            else if(i==2){
-                arr[curr.index]="Bronze Medal";
-                i++;
-            }
-            else{
-                arr[curr.index]=""+(i+1);
-                i++;
-            }
+        Arrays.sort(score);
+
+        int l=0,r=score.length-1;
+        while(l<=r){
+            int temp=score[l];
+            score[l]=score[r];
+            score[r]=temp;
+            l++;
+            r--;
         }
-        return arr;
+        for(int i=0;i<score.length;i++){
+            int index=map.get(score[i]);
+            if(i==0)result[index]="Gold Medal";
+            else if(i==1)result[index]="Silver Medal";
+            else if(i==2)result[index]="Bronze Medal";
+            else result[index]=String.valueOf(i+1);
+        }
+        return result;
     }
 }
