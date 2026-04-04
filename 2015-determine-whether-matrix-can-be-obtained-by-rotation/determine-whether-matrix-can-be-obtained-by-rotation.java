@@ -1,34 +1,28 @@
 class Solution {
-    public boolean findRotation(int[][] mat, int[][] target) {
-
-        int deg=360;
-        while(deg!=0){
-            if(Arrays.deepEquals(mat,target))return true;
-            rotate(mat);
-            deg-=90;
-        }
-        return false;
-    }
-    public void rotate(int[][]mat){
-        for(int i=0;i<mat.length;i++){
-            for(int j=i+1;j<mat[0].length;j++){
-                int temp=mat[i][j];
-                mat[i][j]=mat[j][i];
-                mat[j][i]=temp;
+    private boolean isSame(int[][] mat, int[][] target) {
+        int n = mat.length;
+        for(int i = 0; i < n; i++) {
+            for(int j = 0; j < n; j++) {
+                if(mat[i][j] != target[i][j]) return false;
             }
         }
-        for(int i[]:mat){
-            rev(i);
+        return true;
+    }
+    private int[][] rotate(int[][] mat) {
+        int n = mat.length;
+        int[][] rotated = new int[n][n];
+        for(int i = 0; i < n; i++) {
+            for(int j = 0; j < n; j++) {
+                rotated[j][n - 1 - i] = mat[i][j];
+            }
         }
-
-    }private void rev(int mat[]){
-        int l=0,r=mat.length-1;
-        while(l<r){
-            int temp=mat[l];
-            mat[l]=mat[r];
-            mat[r]=temp;
-            l++;
-            r--;
+        return rotated;
+    }
+    public boolean findRotation(int[][] mat, int[][] target) {
+        for(int k = 0; k < 4; k++) {
+            if(isSame(mat, target)) return true;
+            mat = rotate(mat);
         }
+        return false;
     }
 }
