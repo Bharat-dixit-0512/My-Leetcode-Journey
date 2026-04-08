@@ -1,26 +1,19 @@
 class Solution {
     public int[] findPeakGrid(int[][] mat) {
-        for(int i=0;i<mat.length;i++){
-            for(int j=0;j<mat[0].length;j++){
-                if(checkPeak(mat,i,j)) return new int[]{i,j};
+        int maxi=Integer.MIN_VALUE;
+        int r=-1;
+        int c=-1;
+        int m=mat.length;
+        int n=mat[0].length;
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                if(mat[i][j]>maxi){
+                    maxi=mat[i][j];
+                    r=i;
+                    c=j;
+                }
             }
         }
-        return new int[]{-1,-1};
-    }
-    boolean checkPeak(int[][] mat,int i,int j){
-        int rows = mat.length;
-        int cols = mat[0].length;
-        int num = mat[i][j];
-
-        // check up
-        if (i > 0 && mat[i-1][j] >= num) return false;
-        // check down
-        if (i < rows-1 && mat[i+1][j] >= num) return false;
-        // check left
-        if (j > 0 && mat[i][j-1] >= num) return false;
-        // check right
-        if (j < cols-1 && mat[i][j+1] >= num) return false;
-
-        return true;
+        return new int[]{r,c};
     }
 }
