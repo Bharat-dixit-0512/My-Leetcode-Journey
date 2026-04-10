@@ -10,7 +10,7 @@ class Solution {
                 arr[st.pop()]=ele;
             }
             if(i<n){
-                st.push(i);
+                st.add(i);
             }
         }
         return arr;
