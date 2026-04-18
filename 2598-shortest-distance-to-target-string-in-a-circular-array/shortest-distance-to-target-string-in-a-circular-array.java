@@ -1,19 +1,13 @@
 class Solution {
     public int closestTarget(String[] words, String target, int startIndex) {
+        int ans = words.length;
         int n = words.length;
-        int minRight = Integer.MAX_VALUE;
-        int minLeft = Integer.MAX_VALUE;
-        for (int i = startIndex; i < startIndex + n; i++) {
-            if (words[i % n].equals(target)) {
-                minRight = Math.min(minRight, i - startIndex);
+        for (int i = 0; i < n; ++i) {
+            if (words[i].equals(target)) {
+                int dist = Math.abs(i - startIndex);
+                ans = Math.min(ans, Math.min(dist, n - dist));
             }
         }
-        for (int i = startIndex + n; i > startIndex; i--) {
-            if (words[i % n].equals(target)) {
-                minLeft = Math.min(minLeft, (startIndex + n - i));
-            }
-        }
-        int ans = Math.min(minLeft, minRight);
-        return ans == Integer.MAX_VALUE ? -1 : ans;
+        return ans < n ? ans : -1;
     }
 }
