@@ -8,6 +8,6 @@ class Solution {
             first=second;
             second=third;
         }
-        return third;
+        return second;
     }
 }
