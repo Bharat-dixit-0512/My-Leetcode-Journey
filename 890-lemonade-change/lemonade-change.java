@@ -7,18 +7,13 @@ class Solution {
                 if(five>0){
                     five--;
                     ten++;
-                }else{
-                    return false;
-                }
+                }else return false;
             }else{
                 if(five>0 && ten>0){
                     five--;
                     ten--;
-                }else if(five >=3){
-                    five-=3;
-                }else{
-                    return false;
-                }
+                }else if(five >=3) five-=3;
+                else return false;
             }
         }
         return true;
