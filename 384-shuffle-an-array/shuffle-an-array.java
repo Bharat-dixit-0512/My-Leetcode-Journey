@@ -1,23 +1,27 @@
 class Solution {
-    int[] nums;
-    int[] copy;
-    Random rand = new Random();
+    int[] original;
+    int[] array;
+    Random rand;
+
+
     public Solution(int[] nums) {
-        this.nums = nums;
-        copy = nums.clone();
+        original = nums.clone();
+        array = nums.clone();
+        rand = new Random();
     }
+    
     public int[] reset() {
-        nums = copy.clone();
-        return nums;
+        array = original.clone();
+        return array;
     }
+    
     public int[] shuffle() {
-        int[] shuffled = nums.clone();
-        for (int i = shuffled.length - 1; i > 0; i--) {
-            int j = rand.nextInt(i + 1);
-            int temp = shuffled[i];
-            shuffled[i] = shuffled[j];
-            shuffled[j] = temp;
+        for (int i = array.length -1; i>0 ; i--){
+            int j = rand.nextInt(i+1);
+            int temp= array[i];
+            array[i]= array[j];
+            array[j]=temp;
         }
-        return shuffled;
+        return array;
     }
 }
