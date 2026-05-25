@@ -1,20 +1,20 @@
 class Solution {
     public boolean isPalindrome(ListNode head) {
-        StringBuilder stb=new StringBuilder();
+        StringBuilder sb=new StringBuilder();
         while(head!=null){
-            stb.append(head.val);
+            sb.append(head.val);
             head=head.next;
         }
-
-        return checkPalindrome(stb.toString());
-        
+        return palindrome(sb.toString());
     }
-    public boolean checkPalindrome(String str){
-        int left=0,right=str.length()-1;
-        while(left<right){
-            if(str.charAt(left)!=str.charAt(right))return false;
-            left++;
-            right--;
+    private boolean palindrome(String str){
+        int s=0,l=str.length()-1;
+        while(s<=l){
+            if(str.charAt(s)!=str.charAt(l)){
+                return false;
+            }
+            s++;
+            l--;
         }
         return true;
     }
