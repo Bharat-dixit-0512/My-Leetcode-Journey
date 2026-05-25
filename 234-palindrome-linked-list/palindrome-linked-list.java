@@ -1,21 +1,28 @@
 class Solution {
     public boolean isPalindrome(ListNode head) {
-        StringBuilder sb=new StringBuilder();
-        while(head!=null){
-            sb.append(head.val);
-            head=head.next;
+        if (head == null || head.next == null) return true;
+        ListNode slow = head, fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
         }
-        return palindrome(sb.toString());
-    }
-    private boolean palindrome(String str){
-        int s=0,l=str.length()-1;
-        while(s<=l){
-            if(str.charAt(s)!=str.charAt(l)){
-                return false;
-            }
-            s++;
-            l--;
+        ListNode secondHalf = reverse(slow);
+        ListNode firstHalf = head;
+        while (secondHalf != null) {
+            if (firstHalf.val != secondHalf.val) return false;
+            firstHalf = firstHalf.next;
+            secondHalf = secondHalf.next;
         }
         return true;
+    }
+    private ListNode reverse(ListNode node) {
+        ListNode prev = null, curr = node;
+        while (curr != null) {
+            ListNode next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        return prev;
     }
 }
