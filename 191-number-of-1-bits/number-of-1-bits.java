@@ -1,10 +1,11 @@
 class Solution {
     public int hammingWeight(int n) {
-        int setBitCount = 0;
-        while (n != 0) {
-            n &= (n - 1);
-            ++setBitCount;
+        int count=0;
+        while(n!=0){
+            if(n%2==1)count++;
+            
+            n/=2;
         }
-        return setBitCount;
+        return count;
     }
 }
