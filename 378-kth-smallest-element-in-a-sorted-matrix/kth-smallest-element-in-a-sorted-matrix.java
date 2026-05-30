@@ -8,14 +8,10 @@ class Solution {
             }
         }
 
-        int num=0;
+        
         Collections.sort(list);
-        for(int i=0;i<list.size();i++){
-            if(i==k-1){
-                num=list.get(i);
-            }
-        }
+        
 
-        return num;
+        return list.get(k-1);
     }
 }
