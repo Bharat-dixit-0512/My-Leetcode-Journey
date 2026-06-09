@@ -13,11 +13,13 @@ class Solution {
             result.add(new ArrayList<>(c));
             return;
         }
-        for(int i=si;i<nums.size();i++){
-            int num=nums.get(i);
-            c.add(num);
-            fun(nums,result,k,c,i+1);
-            c.remove(c.size()-1);
-        }
+        if(si>=nums.size())return;
+        //exclude
+        fun(nums,result,k,c,si+1);
+
+        //include
+        c.add(nums.get(si));
+        fun(nums,result,k,c,si+1);
+        c.remove(c.size()-1);
     }
 }
