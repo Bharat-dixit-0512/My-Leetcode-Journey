@@ -12,10 +12,15 @@ class Solution {
             ans.add(new ArrayList<>(c));
             return;
         }
-        for(int i=si;i<list.size();i++){
-            c.add(list.get(i));
-            fun(list,ans,k,c,i+1);
-            c.remove(c.size()-1);
+        if(si>=list.size()){
+            return;
         }
+        //exclude
+        fun(list,ans,k,c,si+1);
+
+        //include
+        c.add(list.get(si));
+        fun(list,ans,k,c,si+1);
+        c.remove(c.size()-1);
     }
 }
