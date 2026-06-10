@@ -1,19 +1,21 @@
 class Solution {
     public List<List<Integer>> combine(int n, int k) {
-        List<Integer> ll = new ArrayList<>();
-        List<List<Integer>> ans = new ArrayList<>();
-        Combine(n, k, 1, ll, ans);
+        List<Integer> list=new ArrayList<>();
+        for(int i=1;i<=n;i++)list.add(i);
+
+        List<List<Integer>> ans=new ArrayList<>();
+        fun(list,ans,k,new ArrayList<>(),0);
         return ans;
     }
-    public static void Combine(int n, int k, int start, List<Integer> ll,  List<List<Integer>> ans) {
-    	if(ll.size() == k) {
-			ans.add(new ArrayList<>(ll));
-			return;
-		}
-		for(int i = start; i <= n; i++) {
-			ll.add(i);
-			Combine(n, k, i + 1,ll,  ans);
-			ll.remove(ll.size() - 1);
-		}
-	}
+    void fun(List<Integer> list,List<List<Integer>> ans,int k,List<Integer> c,int si){
+        if(c.size()==k){
+            ans.add(new ArrayList<>(c));
+            return;
+        }
+        for(int i=si;i<list.size();i++){
+            c.add(list.get(i));
+            fun(list,ans,k,c,i+1);
+            c.remove(c.size()-1);
+        }
+    }
 }
