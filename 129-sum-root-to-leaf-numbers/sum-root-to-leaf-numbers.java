@@ -1,24 +1,18 @@
-class Solution {
-    public int sumNumbers(TreeNode root) {
-        StringBuilder sb=new StringBuilder();
-        List<String> list=new ArrayList<>();
-        fun(list,sb,root);
-        int sum=0;
-        for(String s:list){
-            if(!s.isEmpty())sum+=Integer.parseInt(s);
-        }
-        return sum;
-
+ class Solution {
+    public boolean isLeaf(TreeNode root) {
+        return root.left == null && root.right == null;
     }
-    void fun(List<String> list,StringBuilder sb,TreeNode root){
-        if(root==null)return;
-        sb.append(root.val);
-        if(root.left==null && root.right==null){
-            list.add(sb.toString());
-
-        }else{
-            fun(list,new StringBuilder(sb),root.left);
-            fun(list,new StringBuilder(sb),root.right);
+    public int sumNumbers(TreeNode root) {
+        return count(root, 0);
+    }
+    public int count(TreeNode root, int num) {
+        if (root == null) {
+            return 0;
         }
+        num = num * 10 + root.val;
+        if (isLeaf(root)) {
+            return num;
+        }
+        return count(root.left, num) + count(root.right, num);
     }
 }
