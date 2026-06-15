@@ -1,27 +1,19 @@
 class Solution {
     public int minDistance(String word1, String word2) {
-        int m = word1.length();
-        int n = word2.length();
-        int[][] dp = new int[m + 1][n + 1];
-
-        // Base cases: transforming empty string to other
-        for (int i = 0; i <= m; i++) dp[i][0] = i;
-        for (int j = 0; j <= n; j++) dp[0][j] = j;
-
-        // Fill DP table
-        for (int i = 1; i <= m; i++) {
-            for (int j = 1; j <= n; j++) {
-                if (word1.charAt(i - 1) == word2.charAt(j - 1)) {
-                    dp[i][j] = dp[i - 1][j - 1]; // no operation needed
-                } else {
-                    dp[i][j] = 1 + Math.min(
-                        dp[i - 1][j],              // delete
-                        Math.min(dp[i][j - 1],     // insert
-                                 dp[i - 1][j - 1]) // replace
-                    );
-                }
-            }
-        }
-        return dp[m][n];
+        int dp[][]=new int[word1.length()][word2.length()];
+        for(int r[]:dp)Arrays.fill(r,-10);
+        return fun(word1,word2,0,0,dp);
+    }
+    int fun(String s1,String s2,int i,int j,int dp[][]){
+        if(i==s1.length())return s2.length()-j;
+        if(j==s2.length())return s1.length()-i;
+        if(dp[i][j]!=-10)return dp[i][j];
+        if(s1.charAt(i)==s2.charAt(j)){
+        dp[i][j]=fun(s1,s2,i+1,j+1,dp);
+        } 
+        else{
+            dp[i][j]=1+ Math.min(fun(s1,s2,i,j+1,dp),Math.min(fun(s1,s2,i+1,j,dp),fun(s1,s2,i+1,j+1,dp)));
+        } 
+        return dp[i][j];
     }
 }
