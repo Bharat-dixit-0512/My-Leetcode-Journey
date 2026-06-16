@@ -1,18 +1,13 @@
 class Solution {
     public ListNode reverseList(ListNode head) {
-        ListNode curr = head;
-        ArrayList<Integer> list = new ArrayList<>();
-        while (curr != null) {
-            list.add(curr.val);
-            curr = curr.next;
+        ListNode prev=null,curr=head,temp=null;
+        while(curr!=null){
+            temp=curr.next;
+            curr.next=prev;
+            prev=curr;
+            curr=temp;
         }
-        Collections.reverse(list);
-        ListNode dummy = new ListNode(0);
-        ListNode prev = dummy;
-        for (int i = 0; i < list.size(); i++) {
-            prev.next = new ListNode(list.get(i));
-            prev = prev.next;
-        }
-        return dummy.next;
+        return prev;
+        
     }
 }
