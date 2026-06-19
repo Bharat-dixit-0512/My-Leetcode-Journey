@@ -1,9 +1,11 @@
 var checkIfInstanceOf = function(obj, classFunction) {
-    while(obj!=null){
-        if(obj.constructor===classFunction){
-            return true;
-        }
-        obj=Object.getPrototypeOf(obj);
+    if (typeof classFunction !== 'function') {
+        return false;
+    } else if (obj === null || obj === undefined) {
+        return false;
+    } else if (Object(obj) instanceof classFunction) {
+        return true;
+    }  else {
+        return false;
     }
-    return false;
 };
