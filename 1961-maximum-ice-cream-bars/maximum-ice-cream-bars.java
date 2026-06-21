@@ -3,13 +3,11 @@ class Solution {
         Arrays.sort(costs);
         int count=0;
         for(int i:costs){
-            if(coins>=i){
+            if(i<=coins){
                 coins-=i;
                 count++;
             }
-            if(coins==0){
-                break;
-            }
+            if(coins==0)break;
         }
         return count;
     }
