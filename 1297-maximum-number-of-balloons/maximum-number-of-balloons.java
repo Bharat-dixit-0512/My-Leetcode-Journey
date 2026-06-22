@@ -3,7 +3,7 @@ class Solution {
         HashMap<Character,Integer> fre=new HashMap<>();
         
         for(char ch:text.toCharArray()){
-            if(ballon(ch)){
+            if(balloon(ch)){
                 fre.put(ch,fre.getOrDefault(ch,0)+1);
             }
         }
@@ -18,7 +18,7 @@ class Solution {
         return min;
     }
     
-    boolean ballon(char ch){
+    boolean balloon(char ch){
         return ch=='b'||ch=='a'||ch=='l'||ch=='o'||ch=='n';
     }
 }
