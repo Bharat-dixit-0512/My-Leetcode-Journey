@@ -1,24 +1,17 @@
 class Solution {
     public int maxNumberOfBalloons(String text) {
-        HashMap<Character,Integer> fre=new HashMap<>();
-        
-        for(char ch:text.toCharArray()){
-            if(balloon(ch)){
-                fre.put(ch,fre.getOrDefault(ch,0)+1);
-            }
+        int b_freq = 0;
+        int a_freq = 0;
+        int l_freq = 0;
+        int o_freq = 0;
+        int n_freq = 0;
+        for(char ch: text.toCharArray()) {
+            if(ch == 'b') b_freq++;
+            else if(ch == 'a') a_freq++;
+            else if(ch == 'l') l_freq++;
+            else if(ch == 'o') o_freq++;
+            else if(ch == 'n') n_freq++;
         }
-        
-        int min=Integer.MAX_VALUE;
-        min=Math.min(min,fre.getOrDefault('b',0));
-        min=Math.min(min,fre.getOrDefault('a',0));
-        min=Math.min(min,fre.getOrDefault('l',0)/2);
-        min=Math.min(min,fre.getOrDefault('o',0)/2);
-        min=Math.min(min,fre.getOrDefault('n',0));
-        
-        return min;
-    }
-    
-    boolean balloon(char ch){
-        return ch=='b'||ch=='a'||ch=='l'||ch=='o'||ch=='n';
+        return Math.min(Math.min(b_freq, a_freq), Math.min(n_freq, Math.min(l_freq/2, o_freq/2)));
     }
 }
