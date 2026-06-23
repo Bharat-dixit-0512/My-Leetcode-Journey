@@ -1,24 +1,23 @@
 class Solution {
     public List<List<Integer>> levelOrder(TreeNode root) {
-		List<List<Integer>> res = new ArrayList<>();
-		if (root == null)
-			return res;
-		levelOrderHelper(res, root, 0);
-		return res;
-	}
-	
-	public void levelOrderHelper(List<List<Integer>> res, TreeNode root, int level) {
-		if (root == null)return;
-		List<Integer> curr;
-		if (level >= res.size()) {
-			curr = new ArrayList<>();
-			curr.add(root.val);
-			res.add(curr);
-		} else {
-			curr = res.get(level); 
-			curr.add(root.val); 
-		}
-		levelOrderHelper(res, root.left, level + 1);
-		levelOrderHelper(res, root.right, level + 1);
-	}
+        List<List<Integer>> res=new ArrayList<>();
+        Queue<TreeNode> q=new LinkedList<>();
+        if(root==null)return res;
+        q.add(root);
+        while(!q.isEmpty()){
+            List<Integer> l=new ArrayList<>();
+            int size=q.size();
+            while(size-->0){
+                TreeNode f=q.poll();
+                l.add(f.val);
+
+                if(f.left!=null)q.add(f.left);
+                if(f.right!=null)q.add(f.right);
+            }
+
+            res.add(l);
+        }
+        return res;
+
+    }
 }
