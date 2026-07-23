@@ -1,5 +1,5 @@
 class NumArray {
-    private int[] num;
+    int[] num;
     public NumArray(int[] nums) {
         int n=nums.length;
         num=new int[n+1];
