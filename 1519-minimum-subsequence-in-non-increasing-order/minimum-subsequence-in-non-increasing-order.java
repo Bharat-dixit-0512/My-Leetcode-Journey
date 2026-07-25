@@ -13,9 +13,9 @@ class Solution {
             sum-=nums[i];
             if(sum<curr)
             {
-                return ans;
+               break;
             }
         }
-        return new ArrayList<>();       
+        return ans;       
     }
 }
