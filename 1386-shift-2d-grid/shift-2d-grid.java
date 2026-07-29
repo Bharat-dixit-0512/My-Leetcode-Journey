@@ -2,6 +2,7 @@ class Solution {
     public List<List<Integer>> shiftGrid(int[][] grid, int k) {
         int m = grid.length;
         int n = grid[0].length;
+
         for (int step = 0; step < k; step++) {
             int[][] newGrid = new int[m][n];
             for (int i = 0; i < m; i++) {
@@ -21,13 +22,12 @@ class Solution {
         }
         List<List<Integer>> ans = new ArrayList<>();
         for (int i = 0; i < m; i++) {
-            List<Integer> row = new ArrayList<>();
+            List<Integer> l = new ArrayList<>();
             for (int j = 0; j < n; j++) {
-                row.add(grid[i][j]);
+                l.add(grid[i][j]);
             }
-            ans.add(row);
+            ans.add(l);
         }
-
         return ans;
     }
 }
