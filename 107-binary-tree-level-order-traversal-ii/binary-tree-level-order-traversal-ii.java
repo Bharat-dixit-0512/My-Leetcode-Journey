@@ -14,23 +14,9 @@ class Solution {
                 if(f.left!=null)q.add(f.left);
                 if(f.right!=null)q.add(f.right);
             }
-
             ans.add(l);
         }
-
         Collections.reverse(ans);
         return ans;
     }
-    // void reverse(List<List<Integer>> l){
-    //     int left=0,right=l.size()-1;
-    //     while(left<=right){
-    //         List<Integer> Left=l.get(left);
-    //         List<Integer> Right=l.get(right);
-    //         List<Integer> temp=Left;
-    //         Left=Right;
-    //         Right=temp;
-    //         left++;
-    //         right--;
-    //     }
-    // }
 }
