@@ -1,16 +1,16 @@
 class Solution {
     public String removeOuterParentheses(String s) {
         StringBuilder sb = new StringBuilder();
-        Stack<Character> brackets=new Stack<>();
+        int count = 0;
         for (char ch : s.toCharArray()) {
             if (ch == '(') {
-                if (brackets.size() > 0) {
+                if (count > 0) {
                     sb.append('(');
                 }
-                brackets.push('(');
+                count++;
             } else {
-                brackets.pop();
-                if (brackets.size() > 0) {
+                count--;
+                if (count > 0) {
                     sb.append(')');
                 }
             }
